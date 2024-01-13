@@ -56,6 +56,12 @@ app.use("/api/posts", postRoute);
 app.use("/api/categories", CategoriesRoute);
 app.use("/api/question",CategoriesRoute);
 
+
+
+app.get("/", (req, res) => {
+  app.use(express.static(path.resolve(__dirname, "frontend", "build")));
+  res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+});
 app.listen("5000", () => {
   console.log("backend is running");
 });
